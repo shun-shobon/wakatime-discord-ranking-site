@@ -5,6 +5,7 @@ import { getAppState } from "../lib";
 
 import Redirect from "./Redirect";
 import Code from "./Code";
+import Error from "./Error";
 
 const App: VFC = () => {
   const state = useMemo(getAppState, [location.href]);
@@ -13,15 +14,11 @@ const App: VFC = () => {
     return <Code code={state.code} />;
   }
 
-  if (!state.done) {
-    return <Redirect />;
+  if (state.done && state.error !== undefined) {
+    return <Error error={state.error} />;
   }
 
-  return (
-    <div>
-      <h1>Hello, world!</h1>
-    </div>
-  );
+  return <Redirect />;
 };
 
 export default App;

@@ -6,18 +6,14 @@ type Props = {
 
 const Code: VFC<Props> = ({ code }) => {
   return (
-    <div>
-      <div>
-        <h3>このコードをコピーしてDiscordのDMに送信してください。</h3>
-        <div className="relative rounded-md">
-          <input
-            className="block w-full border-gray-300 rounded-md"
-            value={code}
-            type="text"
-            readOnly
-          />
-        </div>
-      </div>
+    <div className="absolute w-full h-full pt-20 px-20 text-center">
+      <h3>このコードをコピーしてDiscordのDMに送信してください。</h3>
+      <textarea
+        className="w-full mt-2 p-1 rounded-md border-2 border-grey-200 resize-none"
+        readOnly
+      >
+        {code}
+      </textarea>
     </div>
   );
 };
